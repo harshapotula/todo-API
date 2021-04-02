@@ -41,7 +41,7 @@ app.post('/add', async(req, res)=>{
 });
 
 app.get('/list', async(req, res)=>{
-   var docs = await db.collection('todo').find().toArray().catch(error=> console.log(error));
+   var docs = await db.collection('todo').find().toArray();
    res.send(JSON.stringify(docs));
 })
 
