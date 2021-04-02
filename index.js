@@ -20,7 +20,7 @@ var Initialize = async function(){
       client.close();
     });
    setInterval(()=>{
-      db.collection('todo').deleteMany({deleteAt: {$gt: new Date()}})
+      db.collection("todo").deleteMany({deleteAt: {$gt: new Date()}})
    }, 60000) //delete expired docs (check after every 1 minutes), not using TTL in mongodb though can be used
 }
 app.use(express.json())
