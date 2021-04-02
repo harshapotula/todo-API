@@ -18,7 +18,7 @@ var Initialize = async function(){
       const collection = client.db("test").collection("todo");
       // perform actions on the collection object
       client.close();
-    }).catch(error =>console.log(error));
+    });
    setInterval(()=>{
       db.collection('todo').deleteMany({deleteAt: {$gt: new Date()}})
    }, 60000) //delete expired docs (check after every 1 minutes), not using TTL in mongodb though can be used
