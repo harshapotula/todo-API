@@ -14,11 +14,13 @@ http.createServer(app).listen(PORT, () => {
 
 var Initialize = async function(){
    const client = new MongoClient(url, {useNewUrlParser: true, useUnifiedTopology: true});
-   await client.connect();
-   console.log("Connected To Database");
-   db = client.db('Harsha');
+   client.connect(err => {
+      const collection = client.db("test").collection("todo");
+      // perform actions on the collection object
+      client.close();
+    });
    setInterval(()=>{
-      db.collection('Todo').deleteMany({deleteAt: {$gt: new Date()}})
+      db.collection('todo').deleteMany({deleteAt: {$gt: new Date()}})
    }, 60000) //delete expired docs (check after every 1 minutes), not using TTL in mongodb though can be used
 }
 app.use(express.json())
