@@ -35,13 +35,13 @@ app.post('/add', async(req, res)=>{
       createdAt: createdAt,
       deleteAt: deleteAt
    }
-   var result = await db.collection('todo').insert(data);
+   var result = await db.collection('todo').insert(data).catch(error =>console.log(error));
    if(result.result.ok == '1') res.send('Success')
    else res.send("Failed")
 });
 
 app.get('/list', async(req, res)=>{
-   var docs = await db.collection('todo').find().toArray();
+   var docs = await db.collection('todo').find().toArray().catch(error=> console.log(error));
    res.send(JSON.stringify(docs));
 })
 
