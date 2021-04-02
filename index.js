@@ -1,12 +1,13 @@
 const MongoClient = require('mongodb').MongoClient;
-const url = "mongodb://localhost/harshatodoDB";
+const url = "mongodb+srv://Harshavardhan:Harsha@1@cluster0.f5e7u.mongodb.net/todoDB?retryWrites=true&w=majority";
 const ObjectID = require('mongodb').ObjectID;
 const express = require('express');
 const app = express();
+const PORT = process.env.PORT || 3000;
 var db;
 
 var http = require('http');
-http.createServer(app).listen(80, () => {
+http.createServer(app).listen(PORT, () => {
    console.log('HTTP Server listening to port 80');
    Initialize();
 });
